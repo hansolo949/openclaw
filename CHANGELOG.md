@@ -45,8 +45,7 @@ Docs: https://docs.openclaw.ai
 - Audio/self-hosted STT: restore `models.providers.*.request.allowPrivateNetwork` for audio transcription so private or LAN speech-to-text endpoints stop tripping SSRF blocks after the v2026.4.14 regression. (#66692) Thanks @jhsmith409.
 - QQBot/cron: guard against undefined `event.content` in `parseFaceTags` and `filterInternalMarkers` so cron-triggered agent turns with no content payload no longer crash with `TypeError: Cannot read properties of undefined (reading 'startsWith')`. (#66302) Thanks @xinmotlanthua.
 - CLI/plugins: stop `--dangerously-force-unsafe-install` plugin installs from falling back to hook-pack installs after security scan failures, while still preserving non-security fallback behavior for real hook packs. (#58909) Thanks @hxy91819.
-
-## 2026.4.14
+- Agents/failover: stop body-less HTTP 400/422 proxy failures from defaulting to `"format"` classification, so embedded retries surface the opaque provider failure instead of falling into a compaction loop. (#66473) Thanks @HongzhuLiu.
 
 ### Changes
 
